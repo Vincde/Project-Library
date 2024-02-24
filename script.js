@@ -7,7 +7,7 @@ function Book(){
 
 function start(){
     let myLibrary = [];
-    /* stuff that activates addBookToLibrary function */
+    
 }
 
 
@@ -37,4 +37,14 @@ function displayLibrary(myLibrary){
         dataSelector[2].value = myLibrary[i].nPages;
         dataSelector[3].value = myLibrary[i].isRead;
     }
+}
+
+
+
+function showForm(){
+    const startButton = document.querySelector('button');
+    startButton.addEventListener('click',() =>{
+        const formToShow = document.querySelector('form');
+        formToShow.style.visibility = 'visible';
+    },{once:true});
 }
