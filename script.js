@@ -68,4 +68,10 @@ function createElement(){
         newRow.appendChild(dataSelector);
     }
 
+    const delButton = document.createElement('button');
+    delButton.setAttribute('type','button');
+    delButton.textContent = 'x';
+    newRow.appendChild(delButton);
 }
+
+/* start(); */
