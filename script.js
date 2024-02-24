@@ -48,3 +48,18 @@ function showForm(){
         formToShow.style.visibility = 'visible';
     },{once:true});
 }
+
+
+function createElement(){
+    const tableSelector = document.querySelector('table');
+    const newRow = document.createElement('tr');
+
+    tableSelector.appendChild(newRow);
+
+    let dataSelector;              /* IF YOU WANT TO ADD A BUTTON YOU NEED TO CHANGE THIS*/
+    for(let i = 0; i < 4; i++){
+        dataSelector = document.createElement('td');
+        tableSelector.appendChild(dataSelector);
+    }
+
+}
