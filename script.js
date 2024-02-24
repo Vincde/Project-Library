@@ -1,4 +1,4 @@
-function Book(){
+function Book(title,author,nPages,isRead){
     this.title = title;
     this.author = author;
     this.nPages = nPages;
@@ -7,7 +7,13 @@ function Book(){
 
 function start(){
     let myLibrary = [];
-    
+    /* showForm();
+    const bbb = document.querySelector('form button');
+    bbb.addEventListener('click', () =>{
+        addBookToLibrary(myLibrary);
+        createElement();
+        displayLibrary(myLibrary);
+    }); */
 }
 
 
@@ -32,10 +38,10 @@ function displayLibrary(myLibrary){
     
     for(let i = 0; i < myLibrary.length; i++){
         dataSelector = rowSelector[i].querySelectorAll('td');
-        dataSelector[0].value = myLibrary[i].title;
-        dataSelector[1].value = myLibrary[i].author;
-        dataSelector[2].value = myLibrary[i].nPages;
-        dataSelector[3].value = myLibrary[i].isRead;
+        dataSelector[0].textContent = myLibrary[i].title;
+        dataSelector[1].textContent = myLibrary[i].author;
+        dataSelector[2].textContent = myLibrary[i].nPages;
+        dataSelector[3].textContent = myLibrary[i].isRead;
     }
 }
 
@@ -59,7 +65,8 @@ function createElement(){
     let dataSelector;              /* IF YOU WANT TO ADD A BUTTON YOU NEED TO CHANGE THIS*/
     for(let i = 0; i < 4; i++){
         dataSelector = document.createElement('td');
-        tableSelector.appendChild(dataSelector);
+        newRow.appendChild(dataSelector);
     }
 
 }
+
