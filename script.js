@@ -7,13 +7,16 @@ function Book(title,author,nPages,isRead){
 
 function start(){
     let myLibrary = [];
-    /* showForm();
+    showForm();
+
     const bbb = document.querySelector('form button');
     bbb.addEventListener('click', () =>{
         addBookToLibrary(myLibrary);
         createElement();
         displayLibrary(myLibrary);
-    }); */
+        setDelBttn(myLibrary);
+    }); 
+    
 }
 
 
@@ -74,4 +77,18 @@ function createElement(){
     newRow.appendChild(delButton);
 }
 
-/* start(); */
+
+
+function setDelBttn(myLibrary){
+    const bttn = document.querySelectorAll('table tr button');
+
+    bttn[bttn.length-1].addEventListener('click', (e) =>{
+        e.target.parentElement.remove();
+        myLibrary.splice(bttn.length-1,1);
+        console.log(myLibrary);
+    });
+}
+
+
+
+start();
