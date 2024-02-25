@@ -82,13 +82,24 @@ function createElement(){
 function setDelBttn(myLibrary){
     const bttn = document.querySelectorAll('table tr button');
 
-    bttn[bttn.length-1].addEventListener('click', (e) =>{
-        e.target.parentElement.remove();
-        myLibrary.splice(bttn.length-1,1);
-        console.log(myLibrary);
-    });
+    for(let i = 0; i < myLibrary.length; i++){
+        bttn[i].addEventListener('click',function addButton(e){
+            
+            e.target.parentElement.remove();
+            myLibrary.splice(i,1);
+
+            for(let j = 0; j < bttn.length; j++){
+                bttn[j].removeEventListener('click',addButton);
+            }
+
+            console.log(myLibrary);
+        });
+    }
 }
 
 
 
 start();
+
+
+
