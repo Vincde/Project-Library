@@ -96,9 +96,13 @@ function setDelBttn(myLibrary){
             e.target.parentElement.remove();
             myLibrary.splice(i,1);
 
-            for(let j = 0; j < bttn.length; j++){
-                bttn[j].removeEventListener('click',addButton);
+            const newList = document.querySelectorAll('.deleteButton');
+
+            for(let j = 0; j < newList.length; j++){
+                newList[j].removeEventListener('click',addButton);
             }
+
+            setDelBttn(myLibrary);
         });
     }
 }
@@ -107,13 +111,26 @@ function setDelBttn(myLibrary){
 function changeReadButton(myLibrary){
     const changeReading = document.querySelectorAll('.changeReadButton');
 
-    const item = changeReading.length - 1;
+    for(let i = 0; i < myLibrary.length; i++){
+        changeReading[i].addEventListener('click',function changeTheRead(e){
+            
+            if(myLibrary[i].isRead === 'yes'){
+             myLibrary[i].isRead = 'no';
+            }
+            else{
+                myLibrary[i].isRead = 'yes';
+            }
+            displayLibrary(myLibrary);
 
-    changeReading[item].addEventListener('click', () => {
-        if(myLibrary[item].isRead === 'yes') myLibrary[item].isRead = 'no';
-        else myLibrary[item].isRead = 'yes';
-        displayLibrary(myLibrary);
-    });
+            const newRead = document.querySelectorAll('.changeReadButton');
+
+            for(let j = 0; j < newRead.length; j++){
+                e.target.removeEventListener('click',changeTheRead);
+            }
+
+            changeReadButton(myLibrary);
+        });
+    }
 }
 
 
