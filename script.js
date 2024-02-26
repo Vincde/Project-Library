@@ -15,6 +15,7 @@ function start(){
         createElement();
         displayLibrary(myLibrary);
         setDelBttn(myLibrary);
+        changeReadButton(myLibrary);
     }); 
     
 }
@@ -73,14 +74,21 @@ function createElement(){
 
     const delButton = document.createElement('button');
     delButton.setAttribute('type','button');
+    delButton.setAttribute('class','deleteButton');
     delButton.textContent = 'x';
     newRow.appendChild(delButton);
+
+    const changeReadButton = document.createElement('button');
+    changeReadButton.setAttribute('type','button');
+    changeReadButton.setAttribute('class','changeReadButton');
+    changeReadButton.textContent = 'change read'; 
+    newRow.appendChild(changeReadButton);
 }
 
 
 
 function setDelBttn(myLibrary){
-    const bttn = document.querySelectorAll('table tr button');
+    const bttn = document.querySelectorAll('.deleteButton');
 
     for(let i = 0; i < myLibrary.length; i++){
         bttn[i].addEventListener('click',function addButton(e){
@@ -91,10 +99,21 @@ function setDelBttn(myLibrary){
             for(let j = 0; j < bttn.length; j++){
                 bttn[j].removeEventListener('click',addButton);
             }
-
-            console.log(myLibrary);
         });
     }
+}
+
+
+function changeReadButton(myLibrary){
+    const changeReading = document.querySelectorAll('.changeReadButton');
+
+    const item = changeReading.length - 1;
+
+    changeReading[item].addEventListener('click', () => {
+        if(myLibrary[item].isRead === 'yes') myLibrary[item].isRead = 'no';
+        else myLibrary[item].isRead = 'yes';
+        displayLibrary(myLibrary);
+    });
 }
 
 
