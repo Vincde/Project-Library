@@ -12,7 +12,7 @@ function start(){
     const bbb = document.querySelector('form button');
     bbb.addEventListener('click', () =>{
         addBookToLibrary(myLibrary);
-        createElement();
+        createElement(myLibrary);
         displayLibrary(myLibrary);
     }); 
     
@@ -62,7 +62,7 @@ function showForm(){
 }
 
 
-function createElement(){
+function createElement(myLibrary){
     const tableSelector = document.querySelector('table');
     const newRow = document.createElement('tr');
 
@@ -76,16 +76,25 @@ function createElement(){
 
     const delButton = document.createElement('button');
     delButton.setAttribute('type','button');
-    delButton.setAttribute('class','deleteButton');
     delButton.textContent = 'x';
     newRow.appendChild(delButton);
+    
 
+    const buttonList = document.querySelectorAll('table > tr button:first-of-type');
+    let j = myLibrary.length - 1;
+    let varb = `element${j}`;
+    buttonList[j].setAttribute('class',varb);
+    deleteButton(myLibrary,varb);
+
+
+    
     const changeReadButton = document.createElement('button');
     changeReadButton.setAttribute('type','button');
-    changeReadButton.setAttribute('class','changeReadButton');
     changeReadButton.textContent = 'change read'; 
     newRow.appendChild(changeReadButton);
 }
+
+
 
 
 
