@@ -14,6 +14,7 @@ function start(){
         addBookToLibrary(myLibrary);
         createElement(myLibrary);
         displayLibrary(myLibrary);
+        changeRead(myLibrary);
     }); 
     
 }
@@ -84,7 +85,7 @@ function createElement(myLibrary){
     let j = myLibrary.length - 1;
     let varb = `element${j}`;
     buttonList[j].setAttribute('class',varb);
-    deleteButton(myLibrary,varb);
+    /* deleteButton(myLibrary,varb); */
 
 
     
@@ -94,8 +95,22 @@ function createElement(myLibrary){
     newRow.appendChild(changeReadButton);
 }
 
+/* missing the final part, the delete button */
 
+function changeRead(myLibrary){
+    const selector = document.querySelectorAll('table > tr button:last-of-type');
 
+    let lengthOfLibrary = myLibrary.length - 1;
+
+    selector[lengthOfLibrary].addEventListener('click',(e)=>{
+        if(myLibrary[lengthOfLibrary].isRead === 'yes') {
+            myLibrary[lengthOfLibrary].isRead = 'no';
+        }else{
+            myLibrary[lengthOfLibrary].isRead = 'yes';
+        }
+        displayLibrary(myLibrary);
+    });
+}
 
 
 
