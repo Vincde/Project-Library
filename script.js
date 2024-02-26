@@ -14,8 +14,6 @@ function start(){
         addBookToLibrary(myLibrary);
         createElement();
         displayLibrary(myLibrary);
-        setDelBttn(myLibrary);
-        changeReadButton(myLibrary);
     }); 
     
 }
@@ -55,8 +53,12 @@ function showForm(){
     const startButton = document.querySelector('button');
     startButton.addEventListener('click',() =>{
         const formToShow = document.querySelector('form');
-        formToShow.style.visibility = 'visible';
-    },{once:true});
+        if(formToShow.style.visibility === 'visible'){
+            formToShow.style.visibility = 'hidden';
+        }else{
+            formToShow.style.visibility = 'visible';
+        }
+    });
 }
 
 
@@ -86,52 +88,6 @@ function createElement(){
 }
 
 
-
-function setDelBttn(myLibrary){
-    const bttn = document.querySelectorAll('.deleteButton');
-
-    for(let i = 0; i < myLibrary.length; i++){
-        bttn[i].addEventListener('click',function addButton(e){
-            
-            e.target.parentElement.remove();
-            myLibrary.splice(i,1);
-
-            const newList = document.querySelectorAll('.deleteButton');
-
-            for(let j = 0; j < newList.length; j++){
-                newList[j].removeEventListener('click',addButton);
-            }
-
-            setDelBttn(myLibrary);
-        });
-    }
-}
-
-
-function changeReadButton(myLibrary){
-    const changeReading = document.querySelectorAll('.changeReadButton');
-
-    for(let i = 0; i < myLibrary.length; i++){
-        changeReading[i].addEventListener('click',function changeTheRead(e){
-            
-            if(myLibrary[i].isRead === 'yes'){
-             myLibrary[i].isRead = 'no';
-            }
-            else{
-                myLibrary[i].isRead = 'yes';
-            }
-            displayLibrary(myLibrary);
-
-            const newRead = document.querySelectorAll('.changeReadButton');
-
-            for(let j = 0; j < newRead.length; j++){
-                e.target.removeEventListener('click',changeTheRead);
-            }
-
-            changeReadButton(myLibrary);
-        });
-    }
-}
 
 
 
