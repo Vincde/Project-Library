@@ -85,10 +85,10 @@ function createElement(myLibrary){
     newRow.appendChild(delButton);
     
 
-    const buttonList = document.querySelectorAll('table > tr button:first-of-type');
+    const buttonList = newRow.querySelector('button:first-of-type');
     let j = myLibrary.length - 1;
     let varb = `element${j}`;
-    buttonList[j].setAttribute('class',varb);
+    buttonList.setAttribute('class',varb);
 
     
     
@@ -101,16 +101,21 @@ function createElement(myLibrary){
 }
 
 function deleteButton(myLibrary,varb){
-    const buttonSelect = document.querySelectorAll('table > tr button:first-of-type');
+    /* const buttonSelect = document.querySelectorAll('table > tr button:first-of-type'); */
     const trSelecting = document.querySelectorAll('table > tr');
 
-    for(let i = 0; i < buttonSelect.length; i++){
-        let valueOfButton = buttonSelect[i].getAttribute('class');
+    for(let i = 0; i < trSelecting.length; i++){
+        if(trSelecting[i].innerHTML === ''){
+            continue;
+        }
+        let buttonSelect = trSelecting[i].querySelector('button:first-of-type');
+        valueOfButton = buttonSelect.getAttribute('class');
         if(valueOfButton === varb){
-            buttonSelect[i].addEventListener('click',() =>{
+            
+            buttonSelect.addEventListener('click',() =>{
                 let characterOfString = valueOfButton.slice(valueOfButton.length-1);
-                myLibrary.slice((parseInt(characterOfString)),1,' ');
-                buttonSelect[i].parentElement.innerHTML = '';
+                myLibrary.splice(parseInt(characterOfString),1,' ');
+                buttonSelect.parentElement.innerHTML = '';
                 displayLibrary(myLibrary);
             });
             
@@ -134,11 +139,6 @@ function changeRead(myLibrary){
     });
 }
 
-/* function removeElementsOfNode(i){
-    const allTr = document.querySelectorAll('table < tr');
-
-    allTr[i].removeChild
-} */
 
 
 
