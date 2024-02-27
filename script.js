@@ -14,7 +14,7 @@ function start(){
         addBookToLibrary(myLibrary);
         createElement(myLibrary);
         displayLibrary(myLibrary);
-        changeRead(myLibrary);
+        
     }); 
     
 }
@@ -98,6 +98,7 @@ function createElement(myLibrary){
     newRow.appendChild(changeReadButton);
 
     deleteButton(myLibrary,varb);
+    changeRead(myLibrary,varb);
 }
 
 function deleteButton(myLibrary,varb){
@@ -124,19 +125,29 @@ function deleteButton(myLibrary,varb){
 }
 
 
-function changeRead(myLibrary){
-    const selector = document.querySelectorAll('table > tr button:last-of-type');
+function changeRead(myLibrary,varb){
+    /* const selector = document.querySelectorAll('table > tr button:last-of-type'); */
+    const trSelecting = document.querySelectorAll('table > tr');
+    
+    for(let j = 0; j < trSelecting.length; j++){
+        if(trSelecting[j].innerHTML === '') continue;
+        let selector = trSelecting[j].querySelector('button:last-of-type');
+        let dontUseThis = trSelecting[j].querySelector('button:first-of-type');
 
-    let lengthOfLibrary = myLibrary.length - 1;
-
-    selector[lengthOfLibrary].addEventListener('click',(e)=>{
-        if(myLibrary[lengthOfLibrary].isRead === 'yes') {
-            myLibrary[lengthOfLibrary].isRead = 'no';
-        }else{
-            myLibrary[lengthOfLibrary].isRead = 'yes';
+        let attributeReference = dontUseThis.getAttribute('class');
+        if(varb === attributeReference){
+            selector.addEventListener('click',(e)=>{
+                if(myLibrary[j].isRead === 'yes') {
+                    myLibrary[j].isRead = 'no';
+                }else{
+                    myLibrary[j].isRead = 'yes';
+                }
+                displayLibrary(myLibrary);
+            });
         }
-        displayLibrary(myLibrary);
-    });
+    }
+    
+    
 }
 
 
