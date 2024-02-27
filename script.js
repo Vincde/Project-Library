@@ -98,7 +98,7 @@ function createElement(myLibrary){
     changeReadButton.setAttribute('type','button');
     changeReadButton.textContent = 'change read'; 
     newRow.appendChild(changeReadButton);
-    
+
     changeRead(myLibrary,varb);
     deleteButton(myLibrary,varb);
     
@@ -116,10 +116,11 @@ function deleteButton(myLibrary,varb){
         if(valueOfButton === varb){
             
             buttonSelect.addEventListener('click',() =>{
-                let characterOfString = valueOfButton.slice(valueOfButton.length-1);
+                let characterOfString = valueOfButton.slice(valueOfButton.length);
                 myLibrary.splice(parseInt(characterOfString),1,' ');
                 buttonSelect.parentElement.innerHTML = '';
                 displayLibrary(myLibrary);
+                console.log(myLibrary);
             });
             
         }
