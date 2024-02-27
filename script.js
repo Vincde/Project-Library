@@ -40,14 +40,15 @@ function displayLibrary(myLibrary){
     let dataSelector;
     
     for(let i = 0; i < myLibrary.length; i++){
-        if(myLibrary[i] === ' '){
+        if(rowSelector[i].innerHTML === ''){
             continue;
-        }
+        }else{
         dataSelector = rowSelector[i].querySelectorAll('td');
         dataSelector[0].textContent = myLibrary[i].title;
         dataSelector[1].textContent = myLibrary[i].author;
         dataSelector[2].textContent = myLibrary[i].nPages;
         dataSelector[3].textContent = myLibrary[i].isRead;
+        }
     }
 }
 
@@ -106,20 +107,10 @@ function deleteButton(myLibrary,varb){
     for(let i = 0; i < buttonSelect.length; i++){
         let valueOfButton = buttonSelect[i].getAttribute('class');
         if(valueOfButton === varb){
-            buttonSelect[i].addEventListener('click',(event) =>{
+            buttonSelect[i].addEventListener('click',() =>{
                 let characterOfString = valueOfButton.slice(valueOfButton.length-1);
                 myLibrary.slice((parseInt(characterOfString)),1,' ');
-
-
-                /* !!!!!!!!!!!!!!!!!!!!!!!!! */
-                while(event.target.parentElement.firstChild){
-                    trSelecting[i].firstChild.remove();
-                }
-                trSelecting[i].parentElement.removeChild(trSelecting[i]);
-                /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-
-
-
+                buttonSelect[i].parentElement.innerHTML = '';
                 displayLibrary(myLibrary);
             });
             
