@@ -11,6 +11,8 @@ function start(){
 
     const bbb = document.querySelector('form button');
     bbb.addEventListener('click', () =>{
+        const inputSelectoru = document.querySelectorAll('input');
+        if(inputSelectoru[3].value != 'yes' && inputSelectoru[3].value != 'no') {return;}
         addBookToLibrary(myLibrary);
         createElement(myLibrary);
         displayLibrary(myLibrary);
@@ -27,7 +29,7 @@ function addBookToLibrary(myLibrary){
     let author = inputSelector[1].value;
     let nPages = inputSelector[2].value;
     let isRead = inputSelector[3].value;
-
+    
     let newBook = new Book(title,author,nPages,isRead);
 
     myLibrary.push(newBook);
@@ -73,7 +75,7 @@ function createElement(myLibrary){
 
     tableSelector.appendChild(newRow);
 
-    let dataSelector;              /* IF YOU WANT TO ADD A BUTTON YOU NEED TO CHANGE THIS*/
+    let dataSelector;             
     for(let i = 0; i < 4; i++){
         dataSelector = document.createElement('td');
         newRow.appendChild(dataSelector);
@@ -102,7 +104,6 @@ function createElement(myLibrary){
 }
 
 function deleteButton(myLibrary,varb){
-    /* const buttonSelect = document.querySelectorAll('table > tr button:first-of-type'); */
     const trSelecting = document.querySelectorAll('table > tr');
 
     for(let i = 0; i < trSelecting.length; i++){
@@ -126,7 +127,6 @@ function deleteButton(myLibrary,varb){
 
 
 function changeRead(myLibrary,varb){
-    /* const selector = document.querySelectorAll('table > tr button:last-of-type'); */
     const trSelecting = document.querySelectorAll('table > tr');
     
     for(let j = 0; j < trSelecting.length; j++){
