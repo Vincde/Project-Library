@@ -40,6 +40,9 @@ function displayLibrary(myLibrary){
     let dataSelector;
     
     for(let i = 0; i < myLibrary.length; i++){
+        if(myLibrary[i] === ' '){
+            continue;
+        }
         dataSelector = rowSelector[i].querySelectorAll('td');
         dataSelector[0].textContent = myLibrary[i].title;
         dataSelector[1].textContent = myLibrary[i].author;
@@ -85,17 +88,45 @@ function createElement(myLibrary){
     let j = myLibrary.length - 1;
     let varb = `element${j}`;
     buttonList[j].setAttribute('class',varb);
-    /* deleteButton(myLibrary,varb); */
 
-
+    
     
     const changeReadButton = document.createElement('button');
     changeReadButton.setAttribute('type','button');
     changeReadButton.textContent = 'change read'; 
     newRow.appendChild(changeReadButton);
+
+    deleteButton(myLibrary,varb);
 }
 
-/* missing the final part, the delete button */
+function deleteButton(myLibrary,varb){
+    const buttonSelect = document.querySelectorAll('table > tr button:first-of-type');
+    const trSelecting = document.querySelectorAll('table > tr');
+
+    for(let i = 0; i < buttonSelect.length; i++){
+        let valueOfButton = buttonSelect[i].getAttribute('class');
+        if(valueOfButton === varb){
+            buttonSelect[i].addEventListener('click',(event) =>{
+                let characterOfString = valueOfButton.slice(valueOfButton.length-1);
+                myLibrary.slice((parseInt(characterOfString)),1,' ');
+
+
+                /* !!!!!!!!!!!!!!!!!!!!!!!!! */
+                while(event.target.parentElement.firstChild){
+                    trSelecting[i].firstChild.remove();
+                }
+                trSelecting[i].parentElement.removeChild(trSelecting[i]);
+                /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+
+
+                displayLibrary(myLibrary);
+            });
+            
+        }
+    }
+}
+
 
 function changeRead(myLibrary){
     const selector = document.querySelectorAll('table > tr button:last-of-type');
@@ -111,6 +142,13 @@ function changeRead(myLibrary){
         displayLibrary(myLibrary);
     });
 }
+
+/* function removeElementsOfNode(i){
+    const allTr = document.querySelectorAll('table < tr');
+
+    allTr[i].removeChild
+} */
+
 
 
 
