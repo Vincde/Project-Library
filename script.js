@@ -98,9 +98,10 @@ function createElement(myLibrary){
     changeReadButton.setAttribute('type','button');
     changeReadButton.textContent = 'change read'; 
     newRow.appendChild(changeReadButton);
-
-    deleteButton(myLibrary,varb);
+    
     changeRead(myLibrary,varb);
+    deleteButton(myLibrary,varb);
+    
 }
 
 function deleteButton(myLibrary,varb){
