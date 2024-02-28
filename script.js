@@ -116,7 +116,7 @@ function deleteButton(myLibrary,varb){
         if(valueOfButton === varb){
             
             buttonSelect.addEventListener('click',() =>{
-                let characterOfString = valueOfButton.slice(valueOfButton.length);
+                let characterOfString = valueOfButton.slice(valueOfButton.length-1);
                 myLibrary.splice(parseInt(characterOfString),1,' ');
                 buttonSelect.parentElement.innerHTML = '';
                 displayLibrary(myLibrary);
