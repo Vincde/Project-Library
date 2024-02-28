@@ -113,14 +113,14 @@ function deleteButton(myLibrary,varb){
         }
         let buttonSelect = trSelecting[i].querySelector('button:first-of-type');
         valueOfButton = buttonSelect.getAttribute('class');
+        
         if(valueOfButton === varb){
             
             buttonSelect.addEventListener('click',() =>{
-                let characterOfString = valueOfButton.slice(valueOfButton.length-1);
+                let characterOfString = valueOfButton.slice(valueOfButton.length-1);  /* verify if the value of this is correct for case of first element */
                 myLibrary.splice(parseInt(characterOfString),1,' ');
                 buttonSelect.parentElement.innerHTML = '';
                 displayLibrary(myLibrary);
-                console.log(myLibrary);
             });
             
         }
