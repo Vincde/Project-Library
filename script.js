@@ -42,7 +42,7 @@ function displayLibrary(myLibrary){
     let dataSelector;
     
     for(let i = 0; i < myLibrary.length; i++){
-        if(rowSelector[i].innerHTML === ''){
+        if(rowSelector[i].innerHTML === ' '){
             continue;
         }else{
         dataSelector = rowSelector[i].querySelectorAll('td');
@@ -91,7 +91,6 @@ function createElement(myLibrary){
     let j = myLibrary.length - 1;
     let varb = `element${j}`;
     buttonList.setAttribute('class',varb);
-
     
     
     const changeReadButton = document.createElement('button');
@@ -106,23 +105,24 @@ function createElement(myLibrary){
 
 function deleteButton(myLibrary,varb){
     const trSelecting = document.querySelectorAll('table > tr');
-
+    let characterOfString;
     for(let i = 0; i < trSelecting.length; i++){
-        if(trSelecting[i].innerHTML === ''){
+        if(trSelecting[i].innerHTML === ' '){
             continue;
         }
+
         let buttonSelect = trSelecting[i].querySelector('button:first-of-type');
         valueOfButton = buttonSelect.getAttribute('class');
-        
+
         if(valueOfButton === varb){
-            
-            buttonSelect.addEventListener('click',() =>{
-                let characterOfString = valueOfButton.slice(valueOfButton.length-1);  /* verify if the value of this is correct for case of first element */
-                myLibrary.splice(parseInt(characterOfString),1,' ');
-                buttonSelect.parentElement.innerHTML = '';
+            console.log(valueOfButton);
+            buttonSelect.addEventListener('click',() =>{   
+                console.log(valueOfButton);        
+                characterOfString = varb.slice(varb.length-1,varb.length);
+                myLibrary.splice(characterOfString,1,' ');
+                buttonSelect.parentElement.innerHTML = ' ';
                 displayLibrary(myLibrary);
             });
-            
         }
     }
 }
@@ -132,7 +132,7 @@ function changeRead(myLibrary,varb){
     const trSelecting = document.querySelectorAll('table > tr');
     
     for(let j = 0; j < trSelecting.length; j++){
-        if(trSelecting[j].innerHTML === '') continue;
+        if(trSelecting[j].innerHTML === ' ') continue;
         let selector = trSelecting[j].querySelector('button:last-of-type');
         let dontUseThis = trSelecting[j].querySelector('button:first-of-type');
 
