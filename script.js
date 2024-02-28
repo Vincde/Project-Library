@@ -115,9 +115,8 @@ function deleteButton(myLibrary,varb){
         valueOfButton = buttonSelect.getAttribute('class');
 
         if(valueOfButton === varb){
-            console.log(valueOfButton);
-            buttonSelect.addEventListener('click',() =>{   
-                console.log(valueOfButton);        
+
+            buttonSelect.addEventListener('click',() =>{           
                 characterOfString = varb.slice(varb.length-1,varb.length);
                 myLibrary.splice(characterOfString,1,' ');
                 buttonSelect.parentElement.innerHTML = ' ';
