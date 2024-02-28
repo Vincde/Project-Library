@@ -11,8 +11,14 @@ function start(){
 
     const bbb = document.querySelector('form button');
     bbb.addEventListener('click', () =>{
-        const inputSelectoru = document.querySelectorAll('input');
-        if(inputSelectoru[3].value != 'yes' && inputSelectoru[3].value != 'no') {return;}
+        const inputSelectorAll = document.querySelectorAll('input');
+        if(inputSelectorAll[3].value != 'yes' && inputSelectorAll[3].value != 'no') {return;}
+        
+        for(let i = 0; i < inputSelectorAll.length; i++){
+        if(inputSelectorAll[i].value === "" || inputSelectorAll[i].value === null || inputSelectorAll[i].value === undefined) return;
+        }
+        
+
         addBookToLibrary(myLibrary);
         createElement(myLibrary);
         displayLibrary(myLibrary);
