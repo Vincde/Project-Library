@@ -125,6 +125,18 @@ class bookTry{
         }
     }
 
+    showForm(){
+        const startButton = document.querySelector('button');
+        startButton.addEventListener('click',() =>{
+            const formToShow = document.querySelector('form');
+            if(formToShow.style.visibility === 'visible'){
+                formToShow.style.visibility = 'hidden';
+            }else{
+                formToShow.style.visibility = 'visible';
+            }
+        });
+    }
+
 }
 
 
@@ -132,7 +144,7 @@ class bookTry{
 
 function start(){
     const bb = new bookTry();
-    showForm();
+    bb.showForm();
 
     const bbb = document.querySelector('form button');
     bbb.addEventListener('click', () =>{
@@ -158,17 +170,7 @@ function start(){
 
 
 
-function showForm(){
-    const startButton = document.querySelector('button');
-    startButton.addEventListener('click',() =>{
-        const formToShow = document.querySelector('form');
-        if(formToShow.style.visibility === 'visible'){
-            formToShow.style.visibility = 'hidden';
-        }else{
-            formToShow.style.visibility = 'visible';
-        }
-    });
-}
+
 
 
 
