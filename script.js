@@ -10,19 +10,35 @@ class Book{
 class bookTry{
     myLibrary = [];
 
+
+    addBookToLibrary(myLibrary){
+        const inputSelector = document.querySelectorAll('input');
+    
+        let title = inputSelector[0].value;
+        let author = inputSelector[1].value;
+        let nPages = inputSelector[2].value;
+        let isRead = inputSelector[3].value;
+        
+        let newBook = new Book(title,author,nPages,isRead);
+    
+        this.myLibrary.push(newBook);
+    
+    }
+
+
     displayLibrary(myLibrary){
         let rowSelector = document.querySelectorAll('table > tr');
         let dataSelector;
         
-        for(let i = 0; i < myLibrary.length; i++){
+        for(let i = 0; i < this.myLibrary.length; i++){
             if(rowSelector[i].innerHTML === ' '){
                 continue;
             }else{
             dataSelector = rowSelector[i].querySelectorAll('td');
-            dataSelector[0].textContent = myLibrary[i].title;
-            dataSelector[1].textContent = myLibrary[i].author;
-            dataSelector[2].textContent = myLibrary[i].nPages;
-            dataSelector[3].textContent = myLibrary[i].isRead;
+            dataSelector[0].textContent = this.myLibrary[i].title;
+            dataSelector[1].textContent = this.myLibrary[i].author;
+            dataSelector[2].textContent = this.myLibrary[i].nPages;
+            dataSelector[3].textContent = this.myLibrary[i].isRead;
             }
         }
     }
@@ -46,7 +62,7 @@ class bookTry{
         
     
         const buttonList = newRow.querySelector('button:first-of-type');
-        let j = myLibrary.length - 1;
+        let j = this.myLibrary.length - 1;
         let varb = `element${j}`;
         buttonList.setAttribute('class',varb);
         
@@ -56,8 +72,8 @@ class bookTry{
         changeReadButton.textContent = 'change read'; 
         newRow.appendChild(changeReadButton);
     
-        this.changeRead(myLibrary,varb);
-        this.deleteButton(myLibrary,varb);
+        this.changeRead(this.myLibrary,varb);
+        this.deleteButton(this.myLibrary,varb);
         
     }
 
@@ -73,10 +89,10 @@ class bookTry{
             let attributeReference = dontUseThis.getAttribute('class');
             if(varb === attributeReference){
                 selector.addEventListener('click',(e)=>{
-                    if(myLibrary[j].isRead === 'yes') {
-                        myLibrary[j].isRead = 'no';
+                    if(this.myLibrary[j].isRead === 'yes') {
+                        this.myLibrary[j].isRead = 'no';
                     }else{
-                        myLibrary[j].isRead = 'yes';
+                        this.myLibrary[j].isRead = 'yes';
                     }
                     this.displayLibrary(myLibrary);
                 });
@@ -95,13 +111,13 @@ class bookTry{
             }
     
             let buttonSelect = trSelecting[i].querySelector('button:first-of-type');
-            valueOfButton = buttonSelect.getAttribute('class');
+            let valueOfButton = buttonSelect.getAttribute('class');
     
             if(valueOfButton === varb){
     
                 buttonSelect.addEventListener('click',() =>{           
                     characterOfString = varb.slice(varb.length-1,varb.length);
-                    myLibrary.splice(characterOfString,1,' ');
+                    this.myLibrary.splice(characterOfString,1,' ');
                     buttonSelect.parentElement.innerHTML = ' ';
                     this.displayLibrary(myLibrary);
                 });
@@ -129,7 +145,7 @@ function start(){
         if(inputSelectorAll[i].value === "" || inputSelectorAll[i].value === null || inputSelectorAll[i].value === undefined) return;
         }
         
-
+        
         bb.addBookToLibrary(this.myLibrary);
         bb.createElement(this.myLibrary);
         bb.displayLibrary(this.myLibrary);
