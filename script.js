@@ -137,54 +137,33 @@ class bookTry{
         });
     }
 
-}
 
 
-
-
-function start(){
-    const bb = new bookTry();
-    bb.showForm();
-
-    const bbb = document.querySelector('form button');
-    bbb.addEventListener('click', () =>{
-
-        const inputSelectorAll = document.querySelectorAll('input');
-
-        if(inputSelectorAll[3].value != 'yes' && inputSelectorAll[3].value != 'no') {return;}
-        
-        for(let i = 0; i < inputSelectorAll.length; i++){
-        if(inputSelectorAll[i].value === "" || inputSelectorAll[i].value === null || inputSelectorAll[i].value === undefined) return;
-        }
-        
-        
-        bb.addBookToLibrary(this.myLibrary);
-        bb.createElement(this.myLibrary);
-        bb.displayLibrary(this.myLibrary);
-        
-    }); 
+    start(){
+        const bb = new bookTry();
+        bb.showForm();
     
+        const bbb = document.querySelector('form button');
+        bbb.addEventListener('click', () =>{
+    
+            const inputSelectorAll = document.querySelectorAll('input');
+    
+            if(inputSelectorAll[3].value != 'yes' && inputSelectorAll[3].value != 'no') {return;}
+            
+            for(let i = 0; i < inputSelectorAll.length; i++){
+            if(inputSelectorAll[i].value === "" || inputSelectorAll[i].value === null || inputSelectorAll[i].value === undefined) return;
+            }
+            
+            
+            bb.addBookToLibrary(this.myLibrary);
+            bb.createElement(this.myLibrary);
+            bb.displayLibrary(this.myLibrary);
+            
+        }); 
+        
+    }
+
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-start();
-
-
-
+let start = new bookTry();
+start.start();
