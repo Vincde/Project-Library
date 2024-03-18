@@ -9,10 +9,6 @@ class Book{
     }
     
 
-    printBook(){
-        console.log(this.title + ' ' + this.author + ' ' + this.nPages + ' ' + this.redIt);
-    }
-
     addToLibrary(){
         Book.prototype.myLibrary.push(this);
     }
@@ -29,39 +25,38 @@ class Book{
 }
 
 (function DOMElem () {
+    Book.prototype.myLibrary = [];
+
     const clickMeButton = document.querySelector('body > button');
     const formToShow = document.querySelector('form');
     const createButton = document.querySelector('form button');
+    const inputsForm = document.querySelectorAll('form input');
 
     clickMeButton.addEventListener('click', () =>{
-        formToShow.style.visibility = 'visible';
+        if((formToShow.style.visibility) === 'visible'){
+            formToShow.style.visibility = 'hidden';
+        }else{
+            formToShow.style.visibility = 'visible';
+        }
     })
 
     createButton.addEventListener('click',() =>{
-        startLibrary(); //this function needs to just create elements and add it to library
+        startLibrary(inputsForm[0].value,inputsForm[1].value,inputsForm[2].value,inputsForm[3].value);
     });
 })();
 
 
-function startLibrary(){
-    Book.prototype.myLibrary = [];
-
-
-
-        //NEW FUNCTION MAYBE????????????????????????????????????????????
-
-    //book pressed!!!!!!!!!1
-
-    /* let name = prompt('title');
-       let author = prompt('author');
-       let nPages = prompt('npages');
-       let redIt = prompt('redit');  */
+function startLibrary(title,author,nPages,redIt){
 
     let newBook = new Book(title,author,nPages,redIt);
     newBook.addToLibrary();
 
+    displayBook();
+}
 
-    //Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
-    
+const displayBook = function() {
+    for(i = 0 ; i < Book.prototype.myLibrary.length; i++){
+        console.log(Book.prototype.myLibrary[i]);
+        
+    }
 }
