@@ -22,16 +22,25 @@ class Book{
         else this.redIt = 'yes';
     }
 
-    deleteSelf(){
-        /*for loop into |
-                        v
-        Book.prototype.myLibrary[i]
-        if one of the books === this 
-            delete it??? 
-            idk if this is possible */
+    deleteSelf(i){
+        Book.prototype.myLibrary[i].remove(); //???
     }
 
 }
+
+(function DOMElem () {
+    const clickMeButton = document.querySelector('body > button');
+    const formToShow = document.querySelector('form');
+    const createButton = document.querySelector('form button');
+
+    clickMeButton.addEventListener('click', () =>{
+        formToShow.style.visibility = 'visible';
+    })
+
+    createButton.addEventListener('click',() =>{
+        startLibrary(); //this function needs to just create elements and add it to library
+    });
+})();
 
 
 function startLibrary(){
