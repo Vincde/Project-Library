@@ -54,7 +54,7 @@ function startLibrary(title,author,nPages,redIt){
     displayBook();
 }
 
-const displayBook = function() {
+const displayBook = function() {  //The displayBook function works correctly! you just need to add DOM to it
     for(i = 0 ; i < Book.prototype.myLibrary.length; i++){
         console.log(Book.prototype.myLibrary[i]);
         
