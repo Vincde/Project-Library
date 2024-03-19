@@ -72,10 +72,10 @@ const displayBook = function() {
     const elementsSelector = document.querySelectorAll('tr td');
 
     for(i = 0 ; i < Book.prototype.myLibrary.length; i++){
-        elementsSelector[j].value = Book.prototype.myLibrary[i].title;
-        elementsSelector[j+1].value = Book.prototype.myLibrary[i].author;
-        elementsSelector[j+2].value = Book.prototype.myLibrary[i].nPages;
-        elementsSelector[j+3].value = Book.prototype.myLibrary[i].redIt;
+        elementsSelector[j].textContent = Book.prototype.myLibrary[i].title;
+        elementsSelector[j+1].textContent = Book.prototype.myLibrary[i].author;
+        elementsSelector[j+2].textContent = Book.prototype.myLibrary[i].nPages;
+        elementsSelector[j+3].textContent = Book.prototype.myLibrary[i].redIt;
         j += 4;
     }
 }
