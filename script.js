@@ -48,15 +48,34 @@ class Book{
 
 function startLibrary(title,author,nPages,redIt){
 
+    const newRow = document.createElement('tr');
+    const tableSelector = document.querySelector('table');
+
+    tableSelector.appendChild(newRow);
+
+    for(let i = 0 ; i < 4; i++){
+        let newData = document.createElement('td');
+        newRow.appendChild(newData);   
+    }
+    
     let newBook = new Book(title,author,nPages,redIt);
     newBook.addToLibrary();
+
+    
+
 
     displayBook();
 }
 
-const displayBook = function() {  //The displayBook function works correctly! you just need to add DOM to it
+const displayBook = function() {
+    let j = 0;
+    const elementsSelector = document.querySelectorAll('tr td');
+
     for(i = 0 ; i < Book.prototype.myLibrary.length; i++){
-        console.log(Book.prototype.myLibrary[i]);
-        
+        elementsSelector[j].value = Book.prototype.myLibrary[i].title;
+        elementsSelector[j+1].value = Book.prototype.myLibrary[i].author;
+        elementsSelector[j+2].value = Book.prototype.myLibrary[i].nPages;
+        elementsSelector[j+3].value = Book.prototype.myLibrary[i].redIt;
+        j += 4;
     }
 }
