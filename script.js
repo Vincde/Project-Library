@@ -50,6 +50,7 @@ function startLibrary(title,author,nPages,redIt){
 
     const newRow = document.createElement('tr');
     const tableSelector = document.querySelector('table');
+    const deleteButton = document.createElement('button');
 
     tableSelector.appendChild(newRow);
 
@@ -57,6 +58,8 @@ function startLibrary(title,author,nPages,redIt){
         let newData = document.createElement('td');
         newRow.appendChild(newData);   
     }
+    newRow.appendChild(deleteButton);
+    deleteButton.textContent = 'X';
     
     let newBook = new Book(title,author,nPages,redIt);
     newBook.addToLibrary();
