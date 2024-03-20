@@ -18,8 +18,13 @@ class Book{
         else this.redIt = 'yes';
     }
 
-    deleteSelf(i){
-        Book.prototype.myLibrary[i].remove(); //???
+    deleteSelf(){
+        for(let j = 0; j < Book.prototype.myLibrary.length; j++){
+            if(Book.prototype.myLibrary[j] === this){
+                Book.prototype.myLibrary.splice(j,1);
+                displayBook();
+            }
+        }
     }
 
 }
@@ -64,7 +69,10 @@ function startLibrary(title,author,nPages,redIt){
     let newBook = new Book(title,author,nPages,redIt);
     newBook.addToLibrary();
 
-    
+    deleteButton.addEventListener('click',()=>{
+        newBook.deleteSelf();
+        newRow.remove();
+    });
 
 
     displayBook();
