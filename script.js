@@ -22,7 +22,6 @@ class Book{
         for(let j = 0; j < Book.prototype.myLibrary.length; j++){
             if(Book.prototype.myLibrary[j] === this){
                 Book.prototype.myLibrary.splice(j,1);
-                displayBook();
             }
         }
     }
@@ -77,7 +76,7 @@ function startLibrary(title,author,nPages,redIt){
     deleteButton.addEventListener('click',()=>{
         newBook.deleteSelf();
         newRow.remove();
-        
+        displayBook();
     });
 
     changeRead.addEventListener('click', ()=>{
@@ -91,7 +90,7 @@ function startLibrary(title,author,nPages,redIt){
 
 const displayBook = function() {
     let j = 0;
-    const elementsSelector = document.querySelectorAll('tr td');
+    const elementsSelector = document.querySelectorAll('tr > td');
 
     for(i = 0 ; i < Book.prototype.myLibrary.length; i++){
         elementsSelector[j].textContent = Book.prototype.myLibrary[i].title;
