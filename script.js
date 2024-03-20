@@ -56,6 +56,7 @@ function startLibrary(title,author,nPages,redIt){
     const newRow = document.createElement('tr');
     const tableSelector = document.querySelector('table');
     const deleteButton = document.createElement('button');
+    const changeRead = document.createElement('button');
 
     tableSelector.appendChild(newRow);
 
@@ -65,6 +66,10 @@ function startLibrary(title,author,nPages,redIt){
     }
     newRow.appendChild(deleteButton);
     deleteButton.textContent = 'X';
+
+    newRow.appendChild(changeRead);
+    changeRead.textContent = 'change read status';
+
     
     let newBook = new Book(title,author,nPages,redIt);
     newBook.addToLibrary();
@@ -72,6 +77,12 @@ function startLibrary(title,author,nPages,redIt){
     deleteButton.addEventListener('click',()=>{
         newBook.deleteSelf();
         newRow.remove();
+        
+    });
+
+    changeRead.addEventListener('click', ()=>{
+        newBook.changeRed();
+        displayBook();
     });
 
 
