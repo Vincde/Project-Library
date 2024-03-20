@@ -50,7 +50,7 @@ class Book{
 })();
 
 
-function startLibrary(title,author,nPages,redIt){
+const startLibrary = function(title,author,nPages,redIt){
 
     const newRow = document.createElement('tr');
     const tableSelector = document.querySelector('table');
@@ -86,6 +86,7 @@ function startLibrary(title,author,nPages,redIt){
 
 
     displayBook();
+
 }
 
 const displayBook = function() {
