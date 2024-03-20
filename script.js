@@ -52,6 +52,12 @@ class Book{
 
 const startLibrary = function(title,author,nPages,redIt){
 
+    for(let j = 0; j < Book.prototype.myLibrary.length; j++){
+        if(Book.prototype.myLibrary[j].title === title || (redIt !== 'yes' && redIt !== 'no')){
+             return;
+        }
+    }
+
     const newRow = document.createElement('tr');
     const tableSelector = document.querySelector('table');
     const deleteButton = document.createElement('button');
