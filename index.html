@@ -10,18 +10,18 @@
     <button type="button">Click me!</button>
     <form action="">
         <label for="title">Title</label>
-        <input type="text" id="title" maxlength="30" minlength="5">
+        <input type="text" id="title" minlength="5" maxlength="30" required>
         
         <label for="author">Author</label>
-        <input type="text" id="author" maxlength="30" minlength="5">
+        <input type="text" id="author" maxlength="30" minlength="5" required>
         
         <label for="nPages">Number of pages</label>
-        <input type="number" id="nPages" min="10" max="50000">
+        <input type="number" id="nPages" min="10" max="50000" required>
         
         <label for="redIt">Red it</label>
-        <input type="text" id="redIt" maxlength="3">
+        <input type="text" id="redIt" maxlength="3" pattern="[Yy][Ee][Ss]" required>
 
-        <button type="button">Create Book!</button>
+        <button>Create Book!</button>
     </form>
 
     <table>
